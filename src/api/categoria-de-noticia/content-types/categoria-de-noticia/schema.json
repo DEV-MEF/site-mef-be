@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoria_de_noticias",
+  "info": {
+    "singularName": "categoria-de-noticia",
+    "pluralName": "categoria-de-noticias",
+    "displayName": "Categoria de Noticia"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Descricao": {
+      "type": "string"
+    }
+  }
+}

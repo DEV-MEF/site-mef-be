@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ministros",
+  "info": {
+    "singularName": "ministro",
+    "pluralName": "ministros",
+    "displayName": "Ministro"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string"
+    },
+    "Bibliografia": {
+      "type": "richtext"
+    },
+    "InicioMandato": {
+      "type": "date"
+    },
+    "FimMandato": {
+      "type": "date"
+    }
+  }
+}

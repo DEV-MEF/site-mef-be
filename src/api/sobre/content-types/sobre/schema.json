@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sobres",
+  "info": {
+    "singularName": "sobre",
+    "pluralName": "sobres",
+    "displayName": "Sobre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Conteudo": {
+      "type": "richtext"
+    },
+    "Imagem": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

@@ -24,8 +24,6 @@ services:
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
-    ports:
-      - "1337:1337"
     networks:
       - strapi
     depends_on:
@@ -54,8 +52,6 @@ services:
     image: adminer:latest
     container_name: adminer
     restart: always
-    ports:
-      - "8080:8080"
     networks:
       - strapi
       

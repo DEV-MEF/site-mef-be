@@ -37,6 +37,7 @@ COPY . .
 RUN ["npm", "run", "build"]
 
 
+RUN mkdir -p /etc/cron.d/
 RUN cat /etc/crontabs/root > /etc/cron.d/0
 COPY cron/* /etc/cron.d/
 RUN cat /etc/cron.d/* >> /etc/crontabs/root

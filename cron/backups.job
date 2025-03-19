@@ -1,0 +1,4 @@
+# Executa um script todos os dias às 10:00, 14:00 e 18:00
+0 1,11,15,19 * * * root /app/bin/backup.sh >> /var/log/cron.log 2>&1
+
+# Linha em branco obrigatória no final do arquivo

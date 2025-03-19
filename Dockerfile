@@ -36,6 +36,13 @@ COPY . .
 
 RUN ["npm", "run", "build"]
 
+
+RUN cat /etc/crontabs/root > /etc/cron.d/0
+COPY cron/* /etc/cron.d/
+RUN cat /etc/cron.d/* >> /etc/crontabs/root
+RUN echo "" >> /etc/crontabs/root
+
+
 CMD ["/bin/sh", "/opt/app/bin/start.sh"]
 
 

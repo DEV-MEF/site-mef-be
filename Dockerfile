@@ -1,29 +1,3 @@
-#FROM node:20-alpine AS builder
-#
-#WORKDIR /app
-#EXPOSE 3000
-#COPY package.json ./
-#RUN yarn install --production
-#
-#FROM node:20-alpine AS final
-#
-#WORKDIR /app
-#
-#RUN apk add --no-cache dcron
-#
-## Copia somente os arquivos necessários da etapa anterior
-#COPY --from=builder /app/node_modules ./node_modules
-#COPY . .
-#RUN npm run build
-#RUN chmod +x bin/*.sh
-#
-#COPY cron/* /etc/cron.d/
-#RUN chmod 0644 /etc/cron.d/*
-#RUN echo "include /etc/cron.d/*" >> /etc/crontabs/root
-#
-#CMD ["/bin/sh", "/app/bin/start.sh"]
-
-
 FROM node:18-alpine3.18
 
 ARG NODE_ENV=development

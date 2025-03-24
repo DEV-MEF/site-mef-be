@@ -1,8 +1,8 @@
 .strapi
 .tmp
-node_modules
-dist
 .next
 .idea
 .git
 .strapi-updater.json
+node_modules
+dist

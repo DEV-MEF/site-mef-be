@@ -16,7 +16,7 @@ source bin/backup.sh
 # Criar o arquivo de log
 
 # Iniciar o Strapi em background e redirecionar a saída para o arquivo de log
-npm run develop
+npm run develop > "${APP_LOG}" 2>&1 &
 
 ## Manter o container ativo, exibindo o log com o tail
-#tail -f "${APP_LOG}" "${CRON_LOG}"
+tail -f "${APP_LOG}" "${CRON_LOG}"

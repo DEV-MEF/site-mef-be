@@ -1,4 +1,8 @@
-# Executa um script todos os dias às 10:00, 14:00 e 18:00
-0 1,11,15,19 * * * root /app/bin/backup.sh >> /var/log/cron.log 2>&1
+# De 10 a 10 minutos
+*/10 * * * *  /bin/bash /opt/app/bin/backup.sh latest >> /var/log/cron.log 2>&1
 
-# Linha em branco obrigatória no final do arquivo
+# Diariemente as 06 e as 18 horas
+0 6,18 * * * /bin/bash /opt/app/bin/backup.sh persistent >> /var/log/cron.log 2>&1
+
+#Sexta as 18 horas
+0 18 * * 5 /bin/bash /opt/app/bin/backup.sh forever >> /var/log/cron.log 2>&1

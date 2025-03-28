@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contacto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "location": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "tel": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "email"
+    },
+    "webpage": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "linkmap": {
+      "type": "text"
+    }
+  }
+}

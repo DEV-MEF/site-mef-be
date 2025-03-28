@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legislations",
+  "info": {
+    "singularName": "legislation",
+    "pluralName": "legislations",
+    "displayName": "Legislação",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "folder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::legislation-folder.legislation-folder"
+    },
+    "files": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "summary": {
+      "type": "text"
+    },
+    "highlight": {
+      "type": "enumeration",
+      "enum": [
+        "Sim",
+        "Não"
+      ]
+    },
+    "content": {
+      "type": "blocks"
+    }
+  }
+}

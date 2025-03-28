@@ -1,22 +1,19 @@
 {
   "kind": "collectionType",
-  "collectionName": "ministros",
+  "collectionName": "missions",
   "info": {
-    "singularName": "ministro",
-    "pluralName": "ministros",
-    "displayName": "O Ministro"
+    "singularName": "mission",
+    "pluralName": "missions",
+    "displayName": "Missões"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "bibliography": {
+    "content": {
       "type": "blocks"
     },
-    "photo": {
+    "image": {
       "allowedTypes": [
         "images",
         "files",

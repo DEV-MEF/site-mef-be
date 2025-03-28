@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legislation_folders",
+  "info": {
+    "singularName": "legislation-folder",
+    "pluralName": "legislation-folders",
+    "displayName": "Pastas de Legislação",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "superfolder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::legislation-folder.legislation-folder"
+    }
+  }
+}

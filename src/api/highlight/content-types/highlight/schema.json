@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "highlights",
+  "info": {
+    "singularName": "highlight",
+    "pluralName": "highlights",
+    "displayName": "Destaques",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

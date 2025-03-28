@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mail_messages",
+  "info": {
+    "singularName": "mail-message",
+    "pluralName": "mail-messages",
+    "displayName": "Mensagens de Email"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "towatches",
+  "info": {
+    "singularName": "towatch",
+    "pluralName": "towatches",
+    "displayName": "Galerias de Videos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

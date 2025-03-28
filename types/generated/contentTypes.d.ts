@@ -369,6 +369,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
+  collectionName: 'abouts';
+  info: {
+    description: '';
+    displayName: 'Sobre N\u00F3s';
+    pluralName: 'abouts';
+    singularName: 'about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
+      Schema.Attribute.Private;
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoriaDeNoticiaCategoriaDeNoticia
   extends Struct.CollectionTypeSchema {
   collectionName: 'categoria_de_noticias';
@@ -398,44 +429,120 @@ export interface ApiCategoriaDeNoticiaCategoriaDeNoticia
   };
 }
 
-export interface ApiDirecoesDirecoes extends Struct.CollectionTypeSchema {
-  collectionName: 'direcoess';
+export interface ApiContactContact extends Struct.CollectionTypeSchema {
+  collectionName: 'contacts';
   info: {
-    displayName: 'Direcoes';
-    pluralName: 'direcoess';
-    singularName: 'direcoes';
+    description: '';
+    displayName: 'Contacto';
+    pluralName: 'contacts';
+    singularName: 'contact';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Conteudo: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Imagem: Schema.Attribute.Media<'images'>;
+    linkmap: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::direcoes.direcoes'
+      'api::contact.contact'
     > &
       Schema.Attribute.Private;
-    Nome: Schema.Attribute.String;
+    location: Schema.Attribute.String;
+    mail: Schema.Attribute.Email;
+    phone: Schema.Attribute.String;
+    photos: Schema.Attribute.Media<'images' | 'videos', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    tel: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    webpage: Schema.Attribute.String;
+  };
+}
+
+export interface ApiDirectionDirection extends Struct.CollectionTypeSchema {
+  collectionName: 'directions';
+  info: {
+    description: '';
+    displayName: 'Dire\u00E7\u00F5es e Servi\u00E7os';
+    pluralName: 'directions';
+    singularName: 'direction';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    acronym: Schema.Attribute.String;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::direction.direction'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Website: Schema.Attribute.String;
+    webpage: Schema.Attribute.String;
   };
 }
 
-export interface ApiDocumentacaoDocumentacao
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'documentacaos';
+export interface ApiDocDoc extends Struct.CollectionTypeSchema {
+  collectionName: 'docs';
   info: {
-    displayName: 'Documentacao';
-    pluralName: 'documentacaos';
-    singularName: 'documentacao';
+    description: '';
+    displayName: 'Documentos';
+    pluralName: 'docs';
+    singularName: 'doc';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    files: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    folder: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::docs-category.docs-category'
+    >;
+    highlight: Schema.Attribute.Enumeration<['Sim', 'N\u00E3o']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::doc.doc'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    summary: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDocsCategoryDocsCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'docs_categories';
+  info: {
+    description: '';
+    displayName: 'Pastas de documentos';
+    pluralName: 'docs-categories';
+    singularName: 'docs-category';
   };
   options: {
     draftAndPublish: true;
@@ -444,15 +551,189 @@ export interface ApiDocumentacaoDocumentacao
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Ficheiro: Schema.Attribute.Media<'files'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::documentacao.documentacao'
+      'api::docs-category.docs-category'
     > &
       Schema.Attribute.Private;
-    Nome: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    superfolder: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::docs-category.docs-category'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
+  collectionName: 'galleries';
+  info: {
+    description: '';
+    displayName: 'Galerias de Imagem';
+    pluralName: 'galleries';
+    singularName: 'gallery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cover: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 15;
+      }>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery.gallery'
+    > &
+      Schema.Attribute.Private;
+    medias: Schema.Attribute.Media<'images' | 'videos', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHighlightHighlight extends Struct.CollectionTypeSchema {
+  collectionName: 'highlights';
+  info: {
+    description: '';
+    displayName: 'Destaques';
+    pluralName: 'highlights';
+    singularName: 'highlight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::highlight.highlight'
+    > &
+      Schema.Attribute.Private;
+    news: Schema.Attribute.Relation<'oneToOne', 'api::new.new'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLegislationFolderLegislationFolder
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'legislation_folders';
+  info: {
+    description: '';
+    displayName: 'Pastas de Legisla\u00E7\u00E3o';
+    pluralName: 'legislation-folders';
+    singularName: 'legislation-folder';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::legislation-folder.legislation-folder'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    superfolder: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::legislation-folder.legislation-folder'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLegislationLegislation extends Struct.CollectionTypeSchema {
+  collectionName: 'legislations';
+  info: {
+    description: '';
+    displayName: 'Legisla\u00E7\u00E3o';
+    pluralName: 'legislations';
+    singularName: 'legislation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    files: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    folder: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::legislation-folder.legislation-folder'
+    >;
+    highlight: Schema.Attribute.Enumeration<['Sim', 'N\u00E3o']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::legislation.legislation'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    summary: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMailMessageMailMessage extends Struct.CollectionTypeSchema {
+  collectionName: 'mail_messages';
+  info: {
+    displayName: 'Mensagens de Email';
+    pluralName: 'mail-messages';
+    singularName: 'mail-message';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mail-message.mail-message'
+    > &
+      Schema.Attribute.Private;
+    mail: Schema.Attribute.String;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    surname: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -462,7 +743,7 @@ export interface ApiDocumentacaoDocumentacao
 export interface ApiMinistroMinistro extends Struct.CollectionTypeSchema {
   collectionName: 'ministros';
   info: {
-    displayName: 'Ministro';
+    displayName: 'O Ministro';
     pluralName: 'ministros';
     singularName: 'ministro';
   };
@@ -470,19 +751,18 @@ export interface ApiMinistroMinistro extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Bibliografia: Schema.Attribute.RichText;
+    bibliography: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    FimMandato: Schema.Attribute.Date;
-    InicioMandato: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::ministro.ministro'
     > &
       Schema.Attribute.Private;
-    Nome: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -490,62 +770,190 @@ export interface ApiMinistroMinistro extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
-  collectionName: 'noticias';
+export interface ApiMinistryMinistry extends Struct.CollectionTypeSchema {
+  collectionName: 'ministries';
   info: {
     description: '';
-    displayName: 'Noticia';
-    pluralName: 'noticias';
-    singularName: 'noticia';
+    displayName: 'Minist\u00E9rio';
+    pluralName: 'ministries';
+    singularName: 'ministry';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    categoria: Schema.Attribute.Enumeration<['A', 'B', 'C', 'AA', 'BB', 'BC']>;
-    Conteudo: Schema.Attribute.Blocks;
+    acronym: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Imagen: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::noticia.noticia'
+      'api::ministry.ministry'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiSobreSobre extends Struct.CollectionTypeSchema {
-  collectionName: 'sobres';
+export interface ApiMissionMission extends Struct.CollectionTypeSchema {
+  collectionName: 'missions';
   info: {
-    displayName: 'Sobre';
-    pluralName: 'sobres';
-    singularName: 'sobre';
+    displayName: 'Miss\u00F5es';
+    pluralName: 'missions';
+    singularName: 'mission';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Conteudo: Schema.Attribute.RichText;
+    content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Imagem: Schema.Attribute.Media<
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mission.mission'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNewNew extends Struct.CollectionTypeSchema {
+  collectionName: 'news';
+  info: {
+    description: '';
+    displayName: 'Noticias';
+    pluralName: 'news';
+    singularName: 'new';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attaches: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::categoria-de-noticia.categoria-de-noticia'
+    >;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::new.new'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    service: Schema.Attribute.Relation<'oneToOne', 'api::direction.direction'>;
+    summary: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOnlineOnline extends Struct.CollectionTypeSchema {
+  collectionName: 'onlines';
+  info: {
+    description: '';
+    displayName: 'Links & Servi\u00E7os Online';
+    pluralName: 'onlines';
+    singularName: 'online';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::online.online'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    priority: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.Enumeration<['Servi\u00E7o', 'Link de Rodope']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'teams';
+  info: {
+    description: '';
+    displayName: 'Equipe';
+    pluralName: 'teams';
+    singularName: 'team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    files: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::sobre.sobre'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTowatchTowatch extends Struct.CollectionTypeSchema {
+  collectionName: 'towatches';
+  info: {
+    description: '';
+    displayName: 'Galerias de Videos';
+    pluralName: 'towatches';
+    singularName: 'towatch';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cover: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::towatch.towatch'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1063,12 +1471,24 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about.about': ApiAboutAbout;
       'api::categoria-de-noticia.categoria-de-noticia': ApiCategoriaDeNoticiaCategoriaDeNoticia;
-      'api::direcoes.direcoes': ApiDirecoesDirecoes;
-      'api::documentacao.documentacao': ApiDocumentacaoDocumentacao;
+      'api::contact.contact': ApiContactContact;
+      'api::direction.direction': ApiDirectionDirection;
+      'api::doc.doc': ApiDocDoc;
+      'api::docs-category.docs-category': ApiDocsCategoryDocsCategory;
+      'api::gallery.gallery': ApiGalleryGallery;
+      'api::highlight.highlight': ApiHighlightHighlight;
+      'api::legislation-folder.legislation-folder': ApiLegislationFolderLegislationFolder;
+      'api::legislation.legislation': ApiLegislationLegislation;
+      'api::mail-message.mail-message': ApiMailMessageMailMessage;
       'api::ministro.ministro': ApiMinistroMinistro;
-      'api::noticia.noticia': ApiNoticiaNoticia;
-      'api::sobre.sobre': ApiSobreSobre;
+      'api::ministry.ministry': ApiMinistryMinistry;
+      'api::mission.mission': ApiMissionMission;
+      'api::new.new': ApiNewNew;
+      'api::online.online': ApiOnlineOnline;
+      'api::team.team': ApiTeamTeam;
+      'api::towatch.towatch': ApiTowatchTowatch;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

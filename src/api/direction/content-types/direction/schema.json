@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "directions",
+  "info": {
+    "singularName": "direction",
+    "pluralName": "directions",
+    "displayName": "Direções e Serviços",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "webpage": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "acronym": {
+      "type": "string"
+    }
+  }
+}

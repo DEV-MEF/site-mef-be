@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "docs_categories",
+  "info": {
+    "singularName": "docs-category",
+    "pluralName": "docs-categories",
+    "displayName": "Pastas de documentos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "superfolder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::docs-category.docs-category"
+    }
+  }
+}

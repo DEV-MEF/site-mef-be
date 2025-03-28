@@ -1,22 +1,24 @@
 {
   "kind": "collectionType",
-  "collectionName": "ministros",
+  "collectionName": "ministries",
   "info": {
-    "singularName": "ministro",
-    "pluralName": "ministros",
-    "displayName": "O Ministro"
+    "singularName": "ministry",
+    "pluralName": "ministries",
+    "displayName": "Ministério",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "name": {
+      "type": "string",
+      "required": true
+    },
+    "acronym": {
       "type": "string"
     },
-    "bibliography": {
-      "type": "blocks"
-    },
-    "photo": {
+    "logo": {
       "allowedTypes": [
         "images",
         "files",

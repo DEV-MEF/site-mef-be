@@ -4,26 +4,33 @@
   "info": {
     "singularName": "mail-message",
     "pluralName": "mail-messages",
-    "displayName": "Mensagens de Email"
+    "displayName": "Mensagens de Email",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "surname": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "mail": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phone": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "message": {
-      "type": "text"
+      "type": "text",
+      "required": true,
+      "minLength": 50
     }
   }
 }

@@ -711,6 +711,7 @@ export interface ApiLegislationLegislation extends Struct.CollectionTypeSchema {
 export interface ApiMailMessageMailMessage extends Struct.CollectionTypeSchema {
   collectionName: 'mail_messages';
   info: {
+    description: '';
     displayName: 'Mensagens de Email';
     pluralName: 'mail-messages';
     singularName: 'mail-message';
@@ -728,10 +729,14 @@ export interface ApiMailMessageMailMessage extends Struct.CollectionTypeSchema {
       'api::mail-message.mail-message'
     > &
       Schema.Attribute.Private;
-    mail: Schema.Attribute.String;
-    message: Schema.Attribute.Text;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
+    mail: Schema.Attribute.String & Schema.Attribute.Required;
+    message: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 50;
+      }>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     surname: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -861,6 +866,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     service: Schema.Attribute.Relation<'oneToOne', 'api::direction.direction'>;
     summary: Schema.Attribute.Text;
+    tags: Schema.Attribute.Component<'tags.news', true>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -955,6 +961,7 @@ export interface ApiTowatchTowatch extends Struct.CollectionTypeSchema {
       'api::towatch.towatch'
     > &
       Schema.Attribute.Private;
+    media: Schema.Attribute.Component<'streaming.videos', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

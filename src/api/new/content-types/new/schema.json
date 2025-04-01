@@ -51,6 +51,11 @@
     },
     "content": {
       "type": "blocks"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tags.news"
     }
   }
 }

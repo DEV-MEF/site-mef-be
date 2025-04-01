@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_streaming_videos",
+  "info": {
+    "displayName": "Videos"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "plataforn": {
+      "type": "enumeration",
+      "enum": [
+        "Youtube"
+      ]
+    },
+    "cover": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

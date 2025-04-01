@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-03-28T10:43:42.728Z"
+    "x-generation-date": "2025-03-31T09:26:50.516Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -18273,6 +18273,12 @@
                 }
               },
               "content": {},
+              "tags": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TagsNewsComponent"
+                }
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -18719,6 +18725,17 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "TagsNewsComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
@@ -20293,6 +20310,12 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "name",
+              "mail",
+              "phone",
+              "message"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -20368,6 +20391,12 @@
       },
       "MailMessage": {
         "type": "object",
+        "required": [
+          "name",
+          "mail",
+          "phone",
+          "message"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -23655,6 +23684,12 @@
                 "example": "string or id"
               },
               "content": {},
+              "tags": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TagsNewsComponent"
+                }
+              },
               "locale": {
                 "type": "string"
               },
@@ -24855,6 +24890,12 @@
             }
           },
           "content": {},
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagsNewsComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -25193,6 +25234,12 @@
                   }
                 },
                 "content": {},
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TagsNewsComponent"
+                  }
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -27216,6 +27263,12 @@
                 ],
                 "example": "string or id"
               },
+              "media": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/StreamingVideosComponent"
+                }
+              },
               "locale": {
                 "type": "string"
               },
@@ -27882,6 +27935,12 @@
               }
             }
           },
+          "media": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StreamingVideosComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -28062,6 +28121,12 @@
                     }
                   }
                 },
+                "media": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StreamingVideosComponent"
+                  }
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -28126,6 +28191,155 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "StreamingVideosComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "plataforn": {
+            "type": "string",
+            "enum": [
+              "Youtube"
+            ]
+          },
+          "cover": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "link": {
+            "type": "string"
           }
         }
       },

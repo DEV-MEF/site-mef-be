@@ -21,6 +21,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "streaming.videos"
     }
   }
 }

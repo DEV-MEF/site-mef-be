@@ -16,6 +16,12 @@ source bin/backup.sh
 # Criar o arquivo de log
 
 # Iniciar o Strapi em background e redirecionar a saída para o arquivo de log
+rm -rf .strapi
+rm -rf .tmp
+rm -rf .dist
+
+npm run build
+# Iniciar o Strapi em background e redirecionar a saída para o arquivo de log
 npm run develop > "${APP_LOG}" 2>&1 &
 
 ## Manter o container ativo, exibindo o log com o tail

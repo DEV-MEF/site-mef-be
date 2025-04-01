@@ -1,0 +1,36 @@
+**Documentação de Alteração do Site**
+
+### Home
+- Remover a seção "Multimídia" e adicionar "Documentos".
+- Adicionar uma seção "Ministro" no menu "Ministério".
+- Tornar o nome do ministério mais visível no cabeçalho do site.
+- Reduzir o tamanho dos cards da seção "Links e Acessos" e renomeá-la para "Serviços Online".
+
+### Menu Ministério
+- Adicionar um novo menu "Ministro" com a apresentação do ministro (Biografia).
+
+### Menu Publicações
+- Manter apenas as seguintes opções:
+  - Notícias
+  - Galeria de Imagens
+  - Multimídia
+  - Documentos
+
+### Página de Documentos
+- Utilizar a mesma estrutura da página de ministérios (lista de ministérios).
+- Exibir apenas o ícone de download para cada documento.
+
+### Rodapé (Footer)
+- Adicionar uma seção de "Links Úteis".
+
+### Notícias
+- Implementar paginação.
+- Adicionar filtros para refinar a busca de notícias.
+
+### Direções
+- No texto de cada direção, incluir links para a respectiva estrutura organizacional e sites relacionados.
+
+### Cabeçalho (Header)
+- Destacar o nome do ministério de forma mais visível, podendo ser por meio de uma imagem.
+
+

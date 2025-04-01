@@ -15,14 +15,16 @@ source bin/backup.sh
 
 # Criar o arquivo de log
 
-# Iniciar o Strapi em background e redirecionar a saída para o arquivo de log
-rm -rf .strapi
-rm -rf .tmp
-rm -rf .dist
+APP_MODE_LC=$(echo "$APP_MODE" | tr '[:upper:]' '[:lower:]')
 
-npm run build
-# Iniciar o Strapi em background e redirecionar a saída para o arquivo de log
-npm run develop > "${APP_LOG}" 2>&1 &
+echo "USING MODE $ ${APP_MODE_LC}"
+if [ "$APP_MODE_LC" = "test" ] || [ "$APP_MODE_LC" = "prod" ]; then
+  echo "RUNNING BUILD VERSION"
+  npm run start > "${APP_LOG}" 2>&1 &
+else
+  echo "RUNNING DEVELOP VERSION"
+  npm run develop > "${APP_LOG}" 2>&1 &
+fi
 
 ## Manter o container ativo, exibindo o log com o tail
 tail -f "${APP_LOG}" "${CRON_LOG}"

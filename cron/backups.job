@@ -1,8 +1,10 @@
 # De 10 a 10 minutos
-*/10 * * * *  /bin/bash /opt/app/bin/backup.sh latest >> /var/log/cron.log 2>&1
+*/10 * * * *  /bin/bash /opt/app/bin/backup.sh latest | tee -a /var/log/service.log /var/log/cron.log /var/log/backup.log  /var/log/backup-latest.log >/dev/null 2>&1
 
 # Diariemente as 06 e as 18 horas
-0 6,18 * * * /bin/bash /opt/app/bin/backup.sh persistent >> /var/log/cron.log 2>&1
+0 6,18 * * * /bin/bash /opt/app/bin/backup.sh persistent | tee -a /var/log/service.log /var/log/cron.log /var/log/backup.log  /var/log/backup-persistent.log >/dev/null 2>&1
 
 #Sexta as 18 horas
-0 18 * * 5 /bin/bash /opt/app/bin/backup.sh forever >> /var/log/cron.log 2>&1
+0 18 * * 5 /bin/bash /opt/app/bin/backup.sh forever | tee -a /var/log/service.log /var/log/cron.log /var/log/backup.log  /var/log/backup-forever.log >/dev/null 2>&1
+
+# Linha em branco obrigatória no final do arquivo

@@ -1,5 +1,5 @@
 #!/bin/bash
-BACKUP_HOME="/backups"
+BACKUP_HOME="/backup.d"
 BACKUP_SOURCES="${BACKUP_HOME}/apps-${PROJECT:-dev}/sources"
 
 # Configurações
